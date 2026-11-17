@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<title>Corredor Decorado · Cozy Home Stop Motion</title>
+<base href="../">
+<meta name="description" content="✨Inspiração para decoração com produtos que você realmente pode comprar na Shopee!">
+<link rel="canonical" href="https://cozyhomesm.github.io/corredor-decorado/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Cozy Home Stop Motion">
+<meta property="og:title" content="Corredor Decorado · Cozy Home Stop Motion">
+<meta property="og:description" content="✨Inspiração para decoração com produtos que você realmente pode comprar na Shopee!">
+<meta property="og:url" content="https://cozyhomesm.github.io/corredor-decorado/">
+<meta property="og:image" content="https://cozyhomesm.github.io/corredor-decorado/share.jpg?v=2053f237">
+<meta property="og:image:secure_url" content="https://cozyhomesm.github.io/corredor-decorado/share.jpg?v=2053f237">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Corredor Decorado · Cozy Home Stop Motion">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Corredor Decorado · Cozy Home Stop Motion">
+<meta name="twitter:description" content="✨Inspiração para decoração com produtos que você realmente pode comprar na Shopee!">
+<meta name="twitter:image" content="https://cozyhomesm.github.io/corredor-decorado/share.jpg?v=2053f237">
+<link rel="icon" type="image/png" href="icon.png?v=25fd9780">
+<link rel="apple-touch-icon" href="icon.png?v=25fd9780">
+<style>
+:root{--accent:#fff}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:#000;color:#fff;overflow:hidden;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.track{display:flex;height:100vh;height:100dvh;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior:contain}
+.track::-webkit-scrollbar{display:none}
+.slide{position:relative;flex:0 0 100%;height:100%;scroll-snap-align:center;scroll-snap-stop:always;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.bg{position:absolute;inset:-60px;background:#111 center/cover no-repeat;filter:blur(30px) brightness(.5)}
+.stage{position:relative;width:100vw;width:min(100vw,56.25vh);width:min(100vw,56.25dvh);aspect-ratio:9/16;max-height:100%}
+.stage img{display:block;width:100%;height:100%;object-fit:cover;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+.hs{position:absolute;width:48px;height:48px;margin:-24px 0 0 -24px;display:flex;align-items:center;justify-content:center;z-index:2}
+.hs .dot{position:relative;z-index:1;width:16px;height:16px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(255,255,255,.35),0 2px 10px rgba(0,0,0,.5);transition:transform .15s}
+.hs:active .dot{transform:scale(.8)}
+.hs::before,.hs::after{content:"";position:absolute;left:50%;top:50%;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:var(--accent);opacity:0;animation:pulse 2.4s ease-out infinite;animation-delay:var(--d,0s)}
+.hs::after{animation-delay:calc(var(--d,0s) + 1.2s)}
+@keyframes pulse{0%{transform:scale(1);opacity:.75}100%{transform:scale(3.4);opacity:0}}
+.top{position:fixed;left:0;right:0;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:calc(14px + env(safe-area-inset-top)) 16px 30px;background:linear-gradient(rgba(0,0,0,.5),transparent);pointer-events:none}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.logo{width:36px;height:36px;border-radius:50%;object-fit:cover;flex:none;background:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.75),0 2px 8px rgba(0,0,0,.35)}
+.title{font-weight:700;font-size:16px;text-shadow:0 1px 6px rgba(0,0,0,.5);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.right{display:flex;align-items:center;gap:8px;margin-left:auto}
+.share{pointer-events:auto;width:34px;height:34px;border:0;border-radius:50%;background:rgba(0,0,0,.4);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.share svg{width:18px;height:18px}
+.counter{font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:rgba(0,0,0,.4);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);font-variant-numeric:tabular-nums}
+.dots{position:fixed;left:0;right:0;bottom:calc(16px + env(safe-area-inset-bottom));z-index:5;display:flex;justify-content:center;gap:6px;pointer-events:none}
+.dots i{width:6px;height:6px;border-radius:3px;background:rgba(255,255,255,.45);transition:width .25s,background .25s;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.dots i.on{width:18px;background:#fff}
+.hint{position:fixed;left:50%;bottom:calc(42px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:6;padding:10px 16px;border-radius:999px;background:rgba(0,0,0,.6);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-size:13px;font-weight:500;white-space:nowrap;transition:opacity .5s;pointer-events:none}
+.hint.off{opacity:0}
+.swipe{position:fixed;left:50%;top:60%;z-index:7;width:150px;height:90px;margin:-45px 0 0 -75px;pointer-events:none;opacity:0;transition:opacity .35s}
+.swipe.on{opacity:1}
+.swipe .hand{position:absolute;left:50%;top:50%;width:64px;height:64px;margin:-32px 0 0 -32px;filter:drop-shadow(0 4px 10px rgba(0,0,0,.55))}
+.swipe .trail{position:absolute;left:50%;top:50%;height:6px;width:0;margin-top:-14px;border-radius:3px;background:linear-gradient(90deg,rgba(255,255,255,.7),rgba(255,255,255,0));opacity:0}
+.swipe.on .hand{animation:swipeHand 1.7s ease-in-out infinite}
+.swipe.on .trail{animation:swipeTrail 1.7s ease-in-out infinite}
+@keyframes swipeHand{0%{transform:translateX(48px) rotate(-8deg);opacity:0}12%{transform:translateX(48px) rotate(-8deg) scale(.92);opacity:1}70%{transform:translateX(-48px) rotate(-22deg) scale(.92);opacity:1}100%{transform:translateX(-56px) rotate(-22deg);opacity:0}}
+@keyframes swipeTrail{0%,12%{left:62%;width:0;opacity:0}70%{left:20%;width:50px;opacity:1}100%{left:16%;width:0;opacity:0}}
+.nav{display:none}
+@media (hover:hover) and (pointer:fine){
+ .nav{display:flex;position:fixed;top:50%;z-index:5;width:44px;height:44px;margin-top:-22px;border:0;border-radius:50%;background:rgba(255,255,255,.92);color:#111;font-size:24px;line-height:1;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 12px rgba(0,0,0,.3)}
+ .nav.prev{left:16px}.nav.next{right:16px}
+ .nav[disabled]{opacity:0;pointer-events:none}
+}
+.backdrop{position:fixed;inset:0;z-index:10;background:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .25s}
+.backdrop.open{opacity:1;pointer-events:auto}
+.sheet{position:fixed;left:50%;bottom:0;z-index:11;width:100%;max-width:480px;transform:translate(-50%,105%);transition:transform .3s cubic-bezier(.2,.8,.2,1);background:#fff;color:#151515;border-radius:22px 22px 0 0;padding:10px 20px calc(20px + env(safe-area-inset-bottom));box-shadow:0 -8px 30px rgba(0,0,0,.3)}
+.sheet.open{transform:translate(-50%,0)}
+.grab{width:40px;height:4px;border-radius:2px;background:#ddd;margin:0 auto 16px}
+.row{display:flex;gap:14px;align-items:center;margin-bottom:18px;padding-right:36px}
+.thumb{flex:0 0 76px;height:76px;border-radius:14px;background-color:#eee;background-repeat:no-repeat;background-size:400% auto}
+.sname{font-size:17px;font-weight:700;line-height:1.25}
+.sprice{margin-top:4px;font-size:16px;font-weight:700;color:#ee4d2d}
+.cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px;border-radius:14px;background:#ee4d2d;color:#fff;font-size:16px;font-weight:700;text-decoration:none}
+.cta:active{filter:brightness(.9)}
+.close{position:absolute;top:14px;right:14px;width:34px;height:34px;border:0;border-radius:50%;background:#f1f1f1;color:#333;font-size:20px;line-height:1;cursor:pointer}
+@media (prefers-reduced-motion:reduce){.hs::before,.hs::after{animation:none;opacity:.3;transform:scale(1.9)}.swipe.on .hand,.swipe.on .trail{animation:none}}
+</style>
+</head>
+<body>
+<main class="track" id="track"></main>
+<div class="top"><div class="brand"><img class="logo" id="logo" alt="" hidden><div class="title" id="title"></div></div><div class="right"><div class="counter" id="counter"></div><button class="share" id="share" aria-label="Compartilhar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg></button></div></div>
+<div class="dots" id="dots"></div>
+<button class="nav prev" id="prev" aria-label="Anterior">‹</button>
+<button class="nav next" id="next" aria-label="Próximo">›</button>
+<div class="hint off" id="hint"></div>
+<div class="swipe" id="swipe" aria-hidden="true"><div class="trail"></div><svg class="hand" viewBox="0 0 24 24"><path fill="#fff" stroke="#222" stroke-width=".9" stroke-linejoin="round" d="M10 7.5c0-.83.67-1.5 1.5-1.5S13 6.67 13 7.5v6h.76c.19 0 .37.04.54.11l4.54 2.26c.53.22.91.76.91 1.38 0 .06-.01.13-.02.2l-.75 5.27c-.11.73-.69 1.28-1.44 1.28h-6.79c-.41 0-.79-.17-1.06-.44L4.75 18.62l.79-.8c.2-.2.48-.33.79-.33.09 0 .16.02.24.03l3.43.72z"/><path fill="none" stroke="#fff" stroke-width="1.3" stroke-linecap="round" d="M8.2 9.6a3.6 3.6 0 1 1 6.6 0"/></svg></div>
+<div class="backdrop" id="backdrop"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="sname">
+ <div class="grab"></div>
+ <button class="close" id="sclose" aria-label="Fechar">×</button>
+ <div class="row"><div class="thumb" id="sthumb"></div><div><div class="sname" id="sname"></div><div class="sprice" id="sprice"></div></div></div>
+ <a class="cta" id="scta" target="_blank" rel="noopener">Ver na Shopee →</a>
+</div>
+<script>
+var DATA={"title":"Cozy Home Stop Motion","desc":"✨Inspiração para decoração com produtos que você realmente pode comprar na Shopee!","accent":"#ffffff","mode":"card","site":"https://cozyhomesm.github.io/","logo":"images/logo.webp?v=005f8764","icon":"icon.png?v=25fd9780","url":"https://cozyhomesm.github.io/corredor-decorado/","image":"https://cozyhomesm.github.io/corredor-decorado/share.jpg?v=2053f237","slides":[{"src":"images/01.webp?v=25160a4b","name":"Cantinho de beleza","slug":"cantinho-de-beleza","points":[{"x":39.08,"y":39.26,"name":"Espelho Redondo com Botão Touch 70x70cm","price":"","url":"https://s.shopee.com.br/5Au8AMw9yR","color":"#ffffff","mode":"card"},{"x":60.51,"y":78.56,"name":"Puff Decorativo Redondo em Linho","price":"","url":"https://s.shopee.com.br/9zzNvMNFgl","color":"#ffffff","mode":"card"},{"x":59.89,"y":62.56,"name":"Penteadeira Camarim Suspenso em MDF","price":"","url":"https://s.shopee.com.br/30pdaXeEVT","color":"#ffffff","mode":"card"},{"x":39.08,"y":18.86,"name":"Prateleira MDF Freijó 80x20cm","price":"","url":"https://s.shopee.com.br/9pfxjHrlxw","color":"#ffffff","mode":"card"}]},{"src":"images/02.webp?v=8a188160","name":"Cantinho da Leitura","slug":"cantinho-da-leitura","points":[{"x":52.89,"y":69.98,"name":"Puff Em Suede Com Enchimento","price":"","url":"https://s.shopee.com.br/6AmfMiNgtG","color":"#ffffff","mode":"card"},{"x":81.12,"y":33,"name":"Luminaria De Piso Curva","price":"","url":"https://s.shopee.com.br/1gKG0Te5Ap","color":"#ffffff","mode":"card"},{"x":81.12,"y":81.69,"name":"Tapete de Juta Trançado Redondo de Palha Marrom","price":"","url":"https://s.shopee.com.br/5q9oyAN02X","color":"#ffffff","mode":"card"},{"x":82.97,"y":59.66,"name":"Mesa de Apoio Retrô 62cm Redonda","price":"","url":"https://s.shopee.com.br/80EJYEHc3k","color":"#ffffff","mode":"card"},{"x":46.7,"y":32.65,"name":"Kit 3 Prateleiras 100x20","price":"","url":"https://s.shopee.com.br/5fqOlkDbfj","color":"#ffffff","mode":"card"}]},{"src":"images/03.webp?v=493a9873","name":"Cantinho do Café","slug":"cantinho-do-cafe","points":[{"x":80.11,"y":67.39,"name":"Cafeteira Arno Espresso Steam","price":"","url":"https://s.shopee.com.br/2BGWj1aIcq","color":"#3b82f6","mode":"card"},{"x":62.2,"y":68.02,"name":"Conjunto Suporte Madeira Decoração Coração Com 4 Xícaras 200ML Porcelana Branca","price":"","url":"https://s.shopee.com.br/114ZL2EI72","color":"#3b82f6","mode":"card"},{"x":40.04,"y":68.9,"name":"Pote âmbar de Vidro com Tampa Hermética de Bambu","price":"","url":"https://s.shopee.com.br/1W0pvyhC3S","color":"#3b82f6","mode":"card"},{"x":30.64,"y":74.19,"name":"Bandeja de MDF estilo Bambu Retangular Moderna","price":"","url":"https://s.shopee.com.br/7VI351t95n","color":"#3b82f6","mode":"card"},{"x":15.86,"y":66.63,"name":"Conjunto Vaso Decorativo + Arranjo Eucalipto Artificial","price":"","url":"https://s.shopee.com.br/4qHHuAbH8h","color":"#3b82f6","mode":"card"},{"x":61.98,"y":38.17,"name":"Kit 4 Quadros Decorativos Café Tabua Clara Cozinha Cantina","price":"","url":"https://s.shopee.com.br/AAIoGL3h2f","color":"#3b82f6","mode":"card"}]},{"src":"images/04.webp?v=46ac61e2","name":"Corredor Decorado","slug":"corredor-decorado","points":[{"x":52.8,"y":32.25,"name":"Espelho Redondo com Botão Touch 70x70cm","price":"","url":"https://s.shopee.com.br/5Au8AMw9yR","color":"#3b82f6","mode":"card"},{"x":86.16,"y":8.07,"name":"Mini Luminária de Parede LED Recarregável USB-C Magnética Sem Fio","price":"","url":"https://s.shopee.com.br/2qWDZLvKSn","color":"#3b82f6","mode":"card"},{"x":14.74,"y":58.07,"name":"Boiserie 2,3cm Eva Flexível Autocolante À Prova D 'Água","price":"","url":"https://s.shopee.com.br/W8InDZuXK","color":"#3b82f6","mode":"card"},{"x":45.86,"y":39.3,"name":"Conjunto Vaso Decorativo + Arranjo Eucalipto Artificial","price":"","url":"https://s.shopee.com.br/4qHHuAbH8h","color":"#3b82f6","mode":"card"}]}],"base":"../","pageTitle":"Corredor Decorado · Cozy Home Stop Motion"};
+(function(){
+var D=DATA,N=D.slides.length,cur=-1,booting=true,baseTitle=document.title;
+function $(id){return document.getElementById(id)}
+function wanted(){
+ try{
+  var h=decodeURIComponent(location.hash.slice(1));if(h)return h;
+  var parts=location.pathname.split('/').filter(Boolean);
+  return parts.length?decodeURIComponent(parts[parts.length-1]):'';
+ }catch(e){return ''}
+}
+var startIdx=0;
+if(typeof D.startIndex==='number')startIdx=Math.max(0,Math.min(N-1,D.startIndex));
+else{var w=wanted();D.slides.forEach(function(s,i){if(s.slug&&s.slug===w)startIdx=i})}
+var canUrl=/^https?:$/.test(location.protocol)&&typeof D.startIndex!=='number';
+var ROOT='';try{ROOT=new URL('./',document.baseURI).href}catch(e){canUrl=false}
+var track=$('track'),dotsEl=$('dots'),counter=$('counter'),hint=$('hint'),sheet=$('sheet'),backdrop=$('backdrop');
+document.documentElement.style.setProperty('--accent',D.accent||'#ffffff');
+if(D.title)$('title').textContent=D.title;
+if(D.logo){var lg=$('logo');lg.src=D.logo;lg.alt=D.title||'Logo';lg.hidden=false}
+var bgs=[],dots=[];
+D.slides.forEach(function(s,i){
+ var sl=document.createElement('section');sl.className='slide';sl.setAttribute('aria-label','Imagem '+(i+1)+' de '+N);
+ var bg=document.createElement('div');bg.className='bg';bgs.push({el:bg,src:s.src,done:false});sl.appendChild(bg);
+ var st=document.createElement('div');st.className='stage';
+ var img=document.createElement('img');img.alt=(D.title?D.title+' - ':'')+'imagem '+(i+1);img.decoding='async';img.draggable=false;
+ if(Math.abs(i-startIdx)>1)img.loading='lazy';img.src=s.src;st.appendChild(img);
+ s.points.forEach(function(p,j){
+  var a=document.createElement('a');a.className='hs';a.href=p.url;a.target='_blank';a.rel='noopener';
+  a.style.left=p.x+'%';a.style.top=p.y+'%';a.style.setProperty('--d',(j*0.4)+'s');
+  if(/^#[0-9a-f]{6}$/i.test(p.color||''))a.style.setProperty('--accent',p.color);
+  var direct=(p.mode||D.mode)==='direct';
+  a.setAttribute('aria-label',p.name||'Ver produto');
+  a.innerHTML='<span class="dot"></span>';
+  a.addEventListener('click',function(e){hideHint();if(!direct){e.preventDefault();openSheet(p,s.src)}});
+  st.appendChild(a);
+ });
+ sl.appendChild(st);track.appendChild(sl);
+ if(N>1&&N<=15){var dt=document.createElement('i');dotsEl.appendChild(dt);dots.push(dt)}
+});
+function loadBg(i){var b=bgs[i];if(b&&!b.done){b.el.style.backgroundImage='url("'+b.src+'")';b.done=true}}
+function update(i){
+ if(i===cur)return;cur=i;
+ counter.textContent=(i+1)+' / '+N;
+ dots.forEach(function(d,k){d.className=k===i?'on':''});
+ loadBg(i);loadBg(i+1);loadBg(i-1);
+ $('prev').disabled=i===0;$('next').disabled=i===N-1;
+ var s=D.slides[i];
+ document.title=s&&s.name?s.name+(D.title?' · '+D.title:''):(D.title||baseTitle);
+ if(canUrl&&!booting){try{history.replaceState(null,'',s&&s.slug?ROOT+s.slug+'/':ROOT)}catch(e){}}
+}
+function shareUrl(){
+ var s=D.slides[cur];
+ if(D.site)return s&&s.slug?D.site+s.slug+'/':D.site;
+ return location.href;
+}
+$('share').onclick=function(){
+ var u=shareUrl(),s=D.slides[cur],t=s&&s.name?s.name+(D.title?' · '+D.title:''):(D.title||'');
+ if(navigator.share){navigator.share({title:t,url:u}).catch(function(){});return}
+ function done(){hint.textContent='Link copiado!';hint.classList.remove('off');setTimeout(hideHint,2000)}
+ if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(u).then(done,function(){prompt('Copie o link:',u)});
+ else prompt('Copie o link:',u);
+};
+if(N<2)counter.hidden=true;
+var ticking=false;
+track.addEventListener('scroll',function(){
+ if(ticking)return;ticking=true;
+ requestAnimationFrame(function(){ticking=false;var i=Math.round(track.scrollLeft/track.clientWidth);if(i!==cur){update(i);if(!booting)hideHint()}});
+},{passive:true});
+function go(i){i=Math.max(0,Math.min(N-1,i));track.scrollTo({left:i*track.clientWidth,behavior:'smooth'})}
+$('prev').onclick=function(){go(cur-1)};$('next').onclick=function(){go(cur+1)};
+document.addEventListener('keydown',function(e){
+ if(e.key==='Escape')return closeSheet();
+ if(sheet.classList.contains('open'))return;
+ if(e.key==='ArrowRight')go(cur+1);else if(e.key==='ArrowLeft')go(cur-1);
+});
+window.addEventListener('resize',function(){track.scrollLeft=cur*track.clientWidth});
+function hideHint(){hint.classList.add('off')}
+var hasPts=D.slides.some(function(s){return s.points.length});
+var msg=hasPts?'Toque nos pontos para ver os produtos':'';
+if(N>1)msg+=(msg?' · ':'')+'deslize →';
+if(msg){hint.textContent=msg;hint.classList.remove('off');setTimeout(hideHint,5000)}
+function openSheet(p,src){
+ $('sname').textContent=p.name||'Produto em destaque';
+ var pr=$('sprice');pr.textContent=p.price||'';pr.hidden=!p.price;
+ var th=$('sthumb');th.style.backgroundImage='url("'+src+'")';th.style.backgroundPosition=p.x+'% '+p.y+'%';
+ $('scta').href=p.url;
+ sheet.classList.add('open');backdrop.classList.add('open');sheet.setAttribute('aria-hidden','false');
+}
+function closeSheet(){sheet.classList.remove('open');backdrop.classList.remove('open');sheet.setAttribute('aria-hidden','true')}
+backdrop.onclick=closeSheet;$('sclose').onclick=closeSheet;
+$('scta').addEventListener('click',function(){setTimeout(closeSheet,400)});
+var y0=null;
+sheet.addEventListener('touchstart',function(e){y0=e.touches[0].clientY},{passive:true});
+sheet.addEventListener('touchend',function(e){if(y0!==null&&e.changedTouches[0].clientY-y0>60)closeSheet();y0=null});
+var swipeEl=$('swipe'),idleT=null,IDLE=6000,SHOW=3500;
+function hideSwipe(){swipeEl.classList.remove('on')}
+function armIdle(){
+ clearTimeout(idleT);hideSwipe();
+ if(N<2)return;
+ idleT=setTimeout(function(){
+  if(cur<N-1&&!sheet.classList.contains('open')&&!document.hidden){
+   hideHint();swipeEl.classList.add('on');
+   idleT=setTimeout(armIdle,SHOW);
+  }else armIdle();
+ },IDLE);
+}
+['touchstart','pointerdown','wheel','keydown'].forEach(function(t){document.addEventListener(t,armIdle,{passive:true})});
+track.addEventListener('scroll',armIdle,{passive:true});
+update(startIdx);
+if(startIdx>0){
+ track.scrollLeft=startIdx*track.clientWidth;
+ requestAnimationFrame(function(){track.scrollLeft=startIdx*track.clientWidth});
+}
+setTimeout(function(){booting=false},400);
+armIdle();
+})();
+</script>
+</body>
+</html>
