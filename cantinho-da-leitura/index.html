@@ -115,6 +115,7 @@ var startIdx=0;
 if(typeof D.startIndex==='number')startIdx=Math.max(0,Math.min(N-1,D.startIndex));
 else{var w=wanted();D.slides.forEach(function(s,i){if(s.slug&&s.slug===w)startIdx=i})}
 var canUrl=/^https?:$/.test(location.protocol)&&typeof D.startIndex!=='number';
+var ROOT='';try{ROOT=new URL('./',document.baseURI).href}catch(e){canUrl=false}
 var track=$('track'),dotsEl=$('dots'),counter=$('counter'),hint=$('hint'),sheet=$('sheet'),backdrop=$('backdrop');
 document.documentElement.style.setProperty('--accent',D.accent||'#ffffff');
 if(D.title)$('title').textContent=D.title;
@@ -146,7 +147,7 @@ function update(i){
  $('prev').disabled=i===0;$('next').disabled=i===N-1;
  var s=D.slides[i];
  document.title=s&&s.name?s.name+(D.title?' · '+D.title:''):(D.title||baseTitle);
- if(canUrl&&!booting){try{history.replaceState(null,'',s&&s.slug?s.slug+'/':'./')}catch(e){}}
+ if(canUrl&&!booting){try{history.replaceState(null,'',s&&s.slug?ROOT+s.slug+'/':ROOT)}catch(e){}}
 }
 function shareUrl(){
  var s=D.slides[cur];
