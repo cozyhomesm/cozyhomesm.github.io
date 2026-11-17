@@ -4,8 +4,27 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#000000">
-<title>Cozyhomestopmotion</title>
-<meta property="og:title" content="Cozyhomestopmotion">
+<title>Cozy Home Stop Motion</title>
+<meta name="description" content="✨Inspiração para decoração com produtos que você realmente pode comprar na Shopee!">
+<link rel="canonical" href="https://cozyhomesm.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Cozy Home Stop Motion">
+<meta property="og:title" content="Cozy Home Stop Motion">
+<meta property="og:description" content="✨Inspiração para decoração com produtos que você realmente pode comprar na Shopee!">
+<meta property="og:url" content="https://cozyhomesm.github.io/">
+<meta property="og:image" content="https://cozyhomesm.github.io/share.jpg?v=mwl0yonr">
+<meta property="og:image:secure_url" content="https://cozyhomesm.github.io/share.jpg?v=mwl0yonr">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Cozy Home Stop Motion">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cozy Home Stop Motion">
+<meta name="twitter:description" content="✨Inspiração para decoração com produtos que você realmente pode comprar na Shopee!">
+<meta name="twitter:image" content="https://cozyhomesm.github.io/share.jpg?v=mwl0yonr">
+<link rel="icon" type="image/png" href="icon.png?v=mwl0yonr">
+<link rel="apple-touch-icon" href="icon.png?v=mwl0yonr">
 <style>
 :root{--accent:#fff}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
@@ -23,6 +42,8 @@ html,body{height:100%;background:#000;color:#fff;overflow:hidden;font-family:sys
 .hs::after{animation-delay:calc(var(--d,0s) + 1.2s)}
 @keyframes pulse{0%{transform:scale(1);opacity:.75}100%{transform:scale(3.4);opacity:0}}
 .top{position:fixed;left:0;right:0;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:calc(14px + env(safe-area-inset-top)) 16px 30px;background:linear-gradient(rgba(0,0,0,.5),transparent);pointer-events:none}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.logo{width:36px;height:36px;border-radius:50%;object-fit:cover;flex:none;background:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.75),0 2px 8px rgba(0,0,0,.35)}
 .title{font-weight:700;font-size:16px;text-shadow:0 1px 6px rgba(0,0,0,.5);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .counter{margin-left:auto;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:rgba(0,0,0,.4);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);font-variant-numeric:tabular-nums}
 .dots{position:fixed;left:0;right:0;bottom:calc(16px + env(safe-area-inset-bottom));z-index:5;display:flex;justify-content:center;gap:6px;pointer-events:none}
@@ -61,7 +82,7 @@ html,body{height:100%;background:#000;color:#fff;overflow:hidden;font-family:sys
 </head>
 <body>
 <main class="track" id="track"></main>
-<div class="top"><div class="title" id="title"></div><div class="counter" id="counter"></div></div>
+<div class="top"><div class="brand"><img class="logo" id="logo" alt="" hidden><div class="title" id="title"></div></div><div class="counter" id="counter"></div></div>
 <div class="dots" id="dots"></div>
 <button class="nav prev" id="prev" aria-label="Anterior">‹</button>
 <button class="nav next" id="next" aria-label="Próximo">›</button>
@@ -75,13 +96,14 @@ html,body{height:100%;background:#000;color:#fff;overflow:hidden;font-family:sys
  <a class="cta" id="scta" target="_blank" rel="noopener">Ver na Shopee →</a>
 </div>
 <script>
-var DATA={"title":"Cozyhomestopmotion","accent":"#ffffff","mode":"card","slides":[{"src":"images/01.webp?v=mwl0ifq9","points":[{"x":39.08,"y":39.26,"name":"Espelho Redondo com Botão Touch 70x70cm","price":"","url":"https://s.shopee.com.br/5Au8AMw9yR"},{"x":60.51,"y":78.56,"name":"Puff Decorativo Redondo em Linho","price":"","url":"https://s.shopee.com.br/9zzNvMNFgl"},{"x":59.89,"y":62.56,"name":"Penteadeira Camarim Suspenso em MDF","price":"","url":"https://s.shopee.com.br/30pdaXeEVT"},{"x":39.08,"y":18.86,"name":"Prateleira MDF Freijó 80x20cm","price":"","url":"https://s.shopee.com.br/9pfxjHrlxw"}]},{"src":"images/02.webp?v=mwl0ifq9","points":[{"x":52.89,"y":69.98,"name":"Puff Em Suede Com Enchimento","price":"","url":"https://s.shopee.com.br/6AmfMiNgtG"},{"x":81.12,"y":33,"name":"Luminaria De Piso Curva","price":"","url":"https://s.shopee.com.br/1gKG0Te5Ap"},{"x":81.12,"y":81.69,"name":"Tapete de Juta Trançado Redondo de Palha Marrom","price":"","url":"https://s.shopee.com.br/5q9oyAN02X"},{"x":82.97,"y":59.66,"name":"Mesa de Apoio Retrô 62cm Redonda","price":"","url":"https://s.shopee.com.br/80EJYEHc3k"},{"x":46.7,"y":32.65,"name":"Kit 3 Prateleiras 100x20","price":"","url":"https://s.shopee.com.br/5fqOlkDbfj"}]}]};
+var DATA={"title":"Cozy Home Stop Motion","desc":"✨Inspiração para decoração com produtos que você realmente pode comprar na Shopee!","accent":"#ffffff","mode":"card","url":"https://cozyhomesm.github.io/","logo":"images/logo.webp?v=mwl0yonr","icon":"icon.png?v=mwl0yonr","image":"https://cozyhomesm.github.io/share.jpg?v=mwl0yonr","slides":[{"src":"images/01.webp?v=mwl0yonr","points":[{"x":39.08,"y":39.26,"name":"Espelho Redondo com Botão Touch 70x70cm","price":"","url":"https://s.shopee.com.br/5Au8AMw9yR"},{"x":60.51,"y":78.56,"name":"Puff Decorativo Redondo em Linho","price":"","url":"https://s.shopee.com.br/9zzNvMNFgl"},{"x":59.89,"y":62.56,"name":"Penteadeira Camarim Suspenso em MDF","price":"","url":"https://s.shopee.com.br/30pdaXeEVT"},{"x":39.08,"y":18.86,"name":"Prateleira MDF Freijó 80x20cm","price":"","url":"https://s.shopee.com.br/9pfxjHrlxw"}]},{"src":"images/02.webp?v=mwl0yonr","points":[{"x":52.89,"y":69.98,"name":"Puff Em Suede Com Enchimento","price":"","url":"https://s.shopee.com.br/6AmfMiNgtG"},{"x":81.12,"y":33,"name":"Luminaria De Piso Curva","price":"","url":"https://s.shopee.com.br/1gKG0Te5Ap"},{"x":81.12,"y":81.69,"name":"Tapete de Juta Trançado Redondo de Palha Marrom","price":"","url":"https://s.shopee.com.br/5q9oyAN02X"},{"x":82.97,"y":59.66,"name":"Mesa de Apoio Retrô 62cm Redonda","price":"","url":"https://s.shopee.com.br/80EJYEHc3k"},{"x":46.7,"y":32.65,"name":"Kit 3 Prateleiras 100x20","price":"","url":"https://s.shopee.com.br/5fqOlkDbfj"}]}]};
 (function(){
 var D=DATA,N=D.slides.length,cur=-1;
 function $(id){return document.getElementById(id)}
 var track=$('track'),dotsEl=$('dots'),counter=$('counter'),hint=$('hint'),sheet=$('sheet'),backdrop=$('backdrop');
 document.documentElement.style.setProperty('--accent',D.accent||'#ffffff');
 if(D.title)$('title').textContent=D.title;
+if(D.logo){var lg=$('logo');lg.src=D.logo;lg.alt=D.title||'Logo';lg.hidden=false}
 var bgs=[],dots=[];
 D.slides.forEach(function(s,i){
  var sl=document.createElement('section');sl.className='slide';sl.setAttribute('aria-label','Imagem '+(i+1)+' de '+N);
