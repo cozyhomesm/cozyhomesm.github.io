@@ -13,8 +13,8 @@
 <meta property="og:title" content="Cozy Home Stop Motion">
 <meta property="og:description" content="✨Inspiração para decoração com produtos que você realmente pode comprar na Shopee!">
 <meta property="og:url" content="https://cozyhomesm.github.io/">
-<meta property="og:image" content="https://cozyhomesm.github.io/share.jpg?v=mwl0yonr">
-<meta property="og:image:secure_url" content="https://cozyhomesm.github.io/share.jpg?v=mwl0yonr">
+<meta property="og:image" content="https://cozyhomesm.github.io/share.jpg?v=c2194ec2">
+<meta property="og:image:secure_url" content="https://cozyhomesm.github.io/share.jpg?v=c2194ec2">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -22,9 +22,9 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Cozy Home Stop Motion">
 <meta name="twitter:description" content="✨Inspiração para decoração com produtos que você realmente pode comprar na Shopee!">
-<meta name="twitter:image" content="https://cozyhomesm.github.io/share.jpg?v=mwl0yonr">
-<link rel="icon" type="image/png" href="icon.png?v=mwl0yonr">
-<link rel="apple-touch-icon" href="icon.png?v=mwl0yonr">
+<meta name="twitter:image" content="https://cozyhomesm.github.io/share.jpg?v=c2194ec2">
+<link rel="icon" type="image/png" href="icon.png?v=d8af3d6d">
+<link rel="apple-touch-icon" href="icon.png?v=d8af3d6d">
 <style>
 :root{--accent:#fff}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
@@ -45,7 +45,10 @@ html,body{height:100%;background:#000;color:#fff;overflow:hidden;font-family:sys
 .brand{display:flex;align-items:center;gap:10px;min-width:0}
 .logo{width:36px;height:36px;border-radius:50%;object-fit:cover;flex:none;background:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.75),0 2px 8px rgba(0,0,0,.35)}
 .title{font-weight:700;font-size:16px;text-shadow:0 1px 6px rgba(0,0,0,.5);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.counter{margin-left:auto;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:rgba(0,0,0,.4);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);font-variant-numeric:tabular-nums}
+.right{display:flex;align-items:center;gap:8px;margin-left:auto}
+.share{pointer-events:auto;width:34px;height:34px;border:0;border-radius:50%;background:rgba(0,0,0,.4);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.share svg{width:18px;height:18px}
+.counter{font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:rgba(0,0,0,.4);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);font-variant-numeric:tabular-nums}
 .dots{position:fixed;left:0;right:0;bottom:calc(16px + env(safe-area-inset-bottom));z-index:5;display:flex;justify-content:center;gap:6px;pointer-events:none}
 .dots i{width:6px;height:6px;border-radius:3px;background:rgba(255,255,255,.45);transition:width .25s,background .25s;box-shadow:0 1px 3px rgba(0,0,0,.3)}
 .dots i.on{width:18px;background:#fff}
@@ -82,7 +85,7 @@ html,body{height:100%;background:#000;color:#fff;overflow:hidden;font-family:sys
 </head>
 <body>
 <main class="track" id="track"></main>
-<div class="top"><div class="brand"><img class="logo" id="logo" alt="" hidden><div class="title" id="title"></div></div><div class="counter" id="counter"></div></div>
+<div class="top"><div class="brand"><img class="logo" id="logo" alt="" hidden><div class="title" id="title"></div></div><div class="right"><div class="counter" id="counter"></div><button class="share" id="share" aria-label="Compartilhar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg></button></div></div>
 <div class="dots" id="dots"></div>
 <button class="nav prev" id="prev" aria-label="Anterior">‹</button>
 <button class="nav next" id="next" aria-label="Próximo">›</button>
@@ -96,10 +99,21 @@ html,body{height:100%;background:#000;color:#fff;overflow:hidden;font-family:sys
  <a class="cta" id="scta" target="_blank" rel="noopener">Ver na Shopee →</a>
 </div>
 <script>
-var DATA={"title":"Cozy Home Stop Motion","desc":"✨Inspiração para decoração com produtos que você realmente pode comprar na Shopee!","accent":"#ffffff","mode":"card","url":"https://cozyhomesm.github.io/","logo":"images/logo.webp?v=mwl0yonr","icon":"icon.png?v=mwl0yonr","image":"https://cozyhomesm.github.io/share.jpg?v=mwl0yonr","slides":[{"src":"images/01.webp?v=mwl0yonr","points":[{"x":39.08,"y":39.26,"name":"Espelho Redondo com Botão Touch 70x70cm","price":"","url":"https://s.shopee.com.br/5Au8AMw9yR"},{"x":60.51,"y":78.56,"name":"Puff Decorativo Redondo em Linho","price":"","url":"https://s.shopee.com.br/9zzNvMNFgl"},{"x":59.89,"y":62.56,"name":"Penteadeira Camarim Suspenso em MDF","price":"","url":"https://s.shopee.com.br/30pdaXeEVT"},{"x":39.08,"y":18.86,"name":"Prateleira MDF Freijó 80x20cm","price":"","url":"https://s.shopee.com.br/9pfxjHrlxw"}]},{"src":"images/02.webp?v=mwl0yonr","points":[{"x":52.89,"y":69.98,"name":"Puff Em Suede Com Enchimento","price":"","url":"https://s.shopee.com.br/6AmfMiNgtG"},{"x":81.12,"y":33,"name":"Luminaria De Piso Curva","price":"","url":"https://s.shopee.com.br/1gKG0Te5Ap"},{"x":81.12,"y":81.69,"name":"Tapete de Juta Trançado Redondo de Palha Marrom","price":"","url":"https://s.shopee.com.br/5q9oyAN02X"},{"x":82.97,"y":59.66,"name":"Mesa de Apoio Retrô 62cm Redonda","price":"","url":"https://s.shopee.com.br/80EJYEHc3k"},{"x":46.7,"y":32.65,"name":"Kit 3 Prateleiras 100x20","price":"","url":"https://s.shopee.com.br/5fqOlkDbfj"}]}]};
+var DATA={"title":"Cozy Home Stop Motion","desc":"✨Inspiração para decoração com produtos que você realmente pode comprar na Shopee!","accent":"#ffffff","mode":"card","site":"https://cozyhomesm.github.io/","logo":"images/logo.webp?v=84b3fe6f","icon":"icon.png?v=d8af3d6d","url":"https://cozyhomesm.github.io/","image":"https://cozyhomesm.github.io/share.jpg?v=c2194ec2","slides":[{"src":"images/01.webp?v=25160a4b","name":"Cantinho de beleza","slug":"cantinho-de-beleza","points":[{"x":39.08,"y":39.26,"name":"Espelho Redondo com Botão Touch 70x70cm","price":"","url":"https://s.shopee.com.br/5Au8AMw9yR"},{"x":60.51,"y":78.56,"name":"Puff Decorativo Redondo em Linho","price":"","url":"https://s.shopee.com.br/9zzNvMNFgl"},{"x":59.89,"y":62.56,"name":"Penteadeira Camarim Suspenso em MDF","price":"","url":"https://s.shopee.com.br/30pdaXeEVT"},{"x":39.08,"y":18.86,"name":"Prateleira MDF Freijó 80x20cm","price":"","url":"https://s.shopee.com.br/9pfxjHrlxw"}]},{"src":"images/02.webp?v=8a188160","name":"Cantinho da Leitura","slug":"cantinho-da-leitura","points":[{"x":52.89,"y":69.98,"name":"Puff Em Suede Com Enchimento","price":"","url":"https://s.shopee.com.br/6AmfMiNgtG"},{"x":81.12,"y":33,"name":"Luminaria De Piso Curva","price":"","url":"https://s.shopee.com.br/1gKG0Te5Ap"},{"x":81.12,"y":81.69,"name":"Tapete de Juta Trançado Redondo de Palha Marrom","price":"","url":"https://s.shopee.com.br/5q9oyAN02X"},{"x":82.97,"y":59.66,"name":"Mesa de Apoio Retrô 62cm Redonda","price":"","url":"https://s.shopee.com.br/80EJYEHc3k"},{"x":46.7,"y":32.65,"name":"Kit 3 Prateleiras 100x20","price":"","url":"https://s.shopee.com.br/5fqOlkDbfj"}]}]};
 (function(){
-var D=DATA,N=D.slides.length,cur=-1;
+var D=DATA,N=D.slides.length,cur=-1,booting=true,baseTitle=document.title;
 function $(id){return document.getElementById(id)}
+function wanted(){
+ try{
+  var h=decodeURIComponent(location.hash.slice(1));if(h)return h;
+  var parts=location.pathname.split('/').filter(Boolean);
+  return parts.length?decodeURIComponent(parts[parts.length-1]):'';
+ }catch(e){return ''}
+}
+var startIdx=0;
+if(typeof D.startIndex==='number')startIdx=Math.max(0,Math.min(N-1,D.startIndex));
+else{var w=wanted();D.slides.forEach(function(s,i){if(s.slug&&s.slug===w)startIdx=i})}
+var canUrl=/^https?:$/.test(location.protocol)&&typeof D.startIndex!=='number';
 var track=$('track'),dotsEl=$('dots'),counter=$('counter'),hint=$('hint'),sheet=$('sheet'),backdrop=$('backdrop');
 document.documentElement.style.setProperty('--accent',D.accent||'#ffffff');
 if(D.title)$('title').textContent=D.title;
@@ -110,7 +124,7 @@ D.slides.forEach(function(s,i){
  var bg=document.createElement('div');bg.className='bg';bgs.push({el:bg,src:s.src,done:false});sl.appendChild(bg);
  var st=document.createElement('div');st.className='stage';
  var img=document.createElement('img');img.alt=(D.title?D.title+' - ':'')+'imagem '+(i+1);img.decoding='async';img.draggable=false;
- if(i>1)img.loading='lazy';img.src=s.src;st.appendChild(img);
+ if(Math.abs(i-startIdx)>1)img.loading='lazy';img.src=s.src;st.appendChild(img);
  s.points.forEach(function(p,j){
   var a=document.createElement('a');a.className='hs';a.href=p.url;a.target='_blank';a.rel='noopener';
   a.style.left=p.x+'%';a.style.top=p.y+'%';a.style.setProperty('--d',(j*0.4)+'s');
@@ -129,12 +143,27 @@ function update(i){
  dots.forEach(function(d,k){d.className=k===i?'on':''});
  loadBg(i);loadBg(i+1);loadBg(i-1);
  $('prev').disabled=i===0;$('next').disabled=i===N-1;
+ var s=D.slides[i];
+ document.title=s&&s.name?s.name+(D.title?' · '+D.title:''):(D.title||baseTitle);
+ if(canUrl&&!booting){try{history.replaceState(null,'',s&&s.slug?s.slug+'/':'./')}catch(e){}}
 }
+function shareUrl(){
+ var s=D.slides[cur];
+ if(D.site)return s&&s.slug?D.site+s.slug+'/':D.site;
+ return location.href;
+}
+$('share').onclick=function(){
+ var u=shareUrl(),s=D.slides[cur],t=s&&s.name?s.name+(D.title?' · '+D.title:''):(D.title||'');
+ if(navigator.share){navigator.share({title:t,url:u}).catch(function(){});return}
+ function done(){hint.textContent='Link copiado!';hint.classList.remove('off');setTimeout(hideHint,2000)}
+ if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(u).then(done,function(){prompt('Copie o link:',u)});
+ else prompt('Copie o link:',u);
+};
 if(N<2)counter.hidden=true;
 var ticking=false;
 track.addEventListener('scroll',function(){
  if(ticking)return;ticking=true;
- requestAnimationFrame(function(){ticking=false;var i=Math.round(track.scrollLeft/track.clientWidth);if(i!==cur){update(i);hideHint()}});
+ requestAnimationFrame(function(){ticking=false;var i=Math.round(track.scrollLeft/track.clientWidth);if(i!==cur){update(i);if(!booting)hideHint()}});
 },{passive:true});
 function go(i){i=Math.max(0,Math.min(N-1,i));track.scrollTo({left:i*track.clientWidth,behavior:'smooth'})}
 $('prev').onclick=function(){go(cur-1)};$('next').onclick=function(){go(cur+1)};
@@ -176,7 +205,12 @@ function armIdle(){
 }
 ['touchstart','pointerdown','wheel','keydown'].forEach(function(t){document.addEventListener(t,armIdle,{passive:true})});
 track.addEventListener('scroll',armIdle,{passive:true});
-update(0);
+update(startIdx);
+if(startIdx>0){
+ track.scrollLeft=startIdx*track.clientWidth;
+ requestAnimationFrame(function(){track.scrollLeft=startIdx*track.clientWidth});
+}
+setTimeout(function(){booting=false},400);
 armIdle();
 })();
 </script>

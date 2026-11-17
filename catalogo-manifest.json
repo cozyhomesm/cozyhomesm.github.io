@@ -1,0 +1,16 @@
+{
+ "app": "catalogo-shopee",
+ "files": [
+  ".nojekyll",
+  "cantinho-da-leitura/index.html",
+  "cantinho-da-leitura/share.jpg",
+  "cantinho-de-beleza/index.html",
+  "cantinho-de-beleza/share.jpg",
+  "icon.png",
+  "images/01.webp",
+  "images/02.webp",
+  "images/logo.webp",
+  "index.html",
+  "share.jpg"
+ ]
+}
