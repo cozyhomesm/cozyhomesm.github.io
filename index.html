@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<title>Cozyhomestopmotion</title>
+<meta property="og:title" content="Cozyhomestopmotion">
+<style>
+:root{--accent:#fff}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:#000;color:#fff;overflow:hidden;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.track{display:flex;height:100vh;height:100dvh;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior:contain}
+.track::-webkit-scrollbar{display:none}
+.slide{position:relative;flex:0 0 100%;height:100%;scroll-snap-align:center;scroll-snap-stop:always;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.bg{position:absolute;inset:-60px;background:#111 center/cover no-repeat;filter:blur(30px) brightness(.5)}
+.stage{position:relative;width:100vw;width:min(100vw,56.25vh);width:min(100vw,56.25dvh);aspect-ratio:9/16;max-height:100%}
+.stage img{display:block;width:100%;height:100%;object-fit:cover;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+.hs{position:absolute;width:48px;height:48px;margin:-24px 0 0 -24px;display:flex;align-items:center;justify-content:center;z-index:2}
+.hs .dot{position:relative;z-index:1;width:16px;height:16px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(255,255,255,.35),0 2px 10px rgba(0,0,0,.5);transition:transform .15s}
+.hs:active .dot{transform:scale(.8)}
+.hs::before,.hs::after{content:"";position:absolute;left:50%;top:50%;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:var(--accent);opacity:0;animation:pulse 2.4s ease-out infinite;animation-delay:var(--d,0s)}
+.hs::after{animation-delay:calc(var(--d,0s) + 1.2s)}
+@keyframes pulse{0%{transform:scale(1);opacity:.75}100%{transform:scale(3.4);opacity:0}}
+.top{position:fixed;left:0;right:0;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:calc(14px + env(safe-area-inset-top)) 16px 30px;background:linear-gradient(rgba(0,0,0,.5),transparent);pointer-events:none}
+.title{font-weight:700;font-size:16px;text-shadow:0 1px 6px rgba(0,0,0,.5);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.counter{margin-left:auto;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:rgba(0,0,0,.4);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);font-variant-numeric:tabular-nums}
+.dots{position:fixed;left:0;right:0;bottom:calc(16px + env(safe-area-inset-bottom));z-index:5;display:flex;justify-content:center;gap:6px;pointer-events:none}
+.dots i{width:6px;height:6px;border-radius:3px;background:rgba(255,255,255,.45);transition:width .25s,background .25s;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.dots i.on{width:18px;background:#fff}
+.hint{position:fixed;left:50%;bottom:calc(42px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:6;padding:10px 16px;border-radius:999px;background:rgba(0,0,0,.6);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-size:13px;font-weight:500;white-space:nowrap;transition:opacity .5s;pointer-events:none}
+.hint.off{opacity:0}
+.nav{display:none}
+@media (hover:hover) and (pointer:fine){
+ .nav{display:flex;position:fixed;top:50%;z-index:5;width:44px;height:44px;margin-top:-22px;border:0;border-radius:50%;background:rgba(255,255,255,.92);color:#111;font-size:24px;line-height:1;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 12px rgba(0,0,0,.3)}
+ .nav.prev{left:16px}.nav.next{right:16px}
+ .nav[disabled]{opacity:0;pointer-events:none}
+}
+.backdrop{position:fixed;inset:0;z-index:10;background:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .25s}
+.backdrop.open{opacity:1;pointer-events:auto}
+.sheet{position:fixed;left:50%;bottom:0;z-index:11;width:100%;max-width:480px;transform:translate(-50%,105%);transition:transform .3s cubic-bezier(.2,.8,.2,1);background:#fff;color:#151515;border-radius:22px 22px 0 0;padding:10px 20px calc(20px + env(safe-area-inset-bottom));box-shadow:0 -8px 30px rgba(0,0,0,.3)}
+.sheet.open{transform:translate(-50%,0)}
+.grab{width:40px;height:4px;border-radius:2px;background:#ddd;margin:0 auto 16px}
+.row{display:flex;gap:14px;align-items:center;margin-bottom:18px;padding-right:36px}
+.thumb{flex:0 0 76px;height:76px;border-radius:14px;background-color:#eee;background-repeat:no-repeat;background-size:400% auto}
+.sname{font-size:17px;font-weight:700;line-height:1.25}
+.sprice{margin-top:4px;font-size:16px;font-weight:700;color:#ee4d2d}
+.cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px;border-radius:14px;background:#ee4d2d;color:#fff;font-size:16px;font-weight:700;text-decoration:none}
+.cta:active{filter:brightness(.9)}
+.close{position:absolute;top:14px;right:14px;width:34px;height:34px;border:0;border-radius:50%;background:#f1f1f1;color:#333;font-size:20px;line-height:1;cursor:pointer}
+@media (prefers-reduced-motion:reduce){.hs::before,.hs::after{animation:none;opacity:.3;transform:scale(1.9)}}
+</style>
+</head>
+<body>
+<main class="track" id="track"></main>
+<div class="top"><div class="title" id="title"></div><div class="counter" id="counter"></div></div>
+<div class="dots" id="dots"></div>
+<button class="nav prev" id="prev" aria-label="Anterior">‹</button>
+<button class="nav next" id="next" aria-label="Próximo">›</button>
+<div class="hint off" id="hint"></div>
+<div class="backdrop" id="backdrop"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="sname">
+ <div class="grab"></div>
+ <button class="close" id="sclose" aria-label="Fechar">×</button>
+ <div class="row"><div class="thumb" id="sthumb"></div><div><div class="sname" id="sname"></div><div class="sprice" id="sprice"></div></div></div>
+ <a class="cta" id="scta" target="_blank" rel="noopener">Ver na Shopee →</a>
+</div>
+<script>
+var DATA={"title":"Cozyhomestopmotion","accent":"#ffffff","mode":"card","slides":[{"src":"images/01.webp?v=mwkzjf72","points":[{"x":39.08,"y":39.26,"name":"Espelho Redondo com Botão Touch 70x70cm","price":"","url":"https://s.shopee.com.br/5Au8AMw9yR"},{"x":60.51,"y":78.56,"name":"Puff Decorativo Redondo em Linho","price":"","url":"https://s.shopee.com.br/9zzNvMNFgl"},{"x":59.89,"y":62.56,"name":"Penteadeira Camarim Suspenso em MDF","price":"","url":"https://s.shopee.com.br/30pdaXeEVT"},{"x":39.08,"y":18.86,"name":"Prateleira MDF Freijó 80x20cm","price":"","url":"https://s.shopee.com.br/9pfxjHrlxw"}]},{"src":"images/02.webp?v=mwkzjf72","points":[{"x":52.89,"y":69.98,"name":"Puff Em Suede Com Enchimento","price":"","url":"https://s.shopee.com.br/6AmfMiNgtG"},{"x":81.12,"y":33,"name":"Luminaria De Piso Curva","price":"","url":"https://s.shopee.com.br/1gKG0Te5Ap"},{"x":81.12,"y":81.69,"name":"Tapete de Juta Trançado Redondo de Palha Marrom","price":"","url":"https://s.shopee.com.br/5q9oyAN02X"},{"x":82.97,"y":59.66,"name":"Mesa de Apoio Retrô 62cm Redonda","price":"","url":"https://s.shopee.com.br/80EJYEHc3k"},{"x":46.7,"y":32.65,"name":"Kit 3 Prateleiras 100x20","price":"","url":"https://s.shopee.com.br/5fqOlkDbfj"}]}]};
+(function(){
+var D=DATA,N=D.slides.length,cur=-1;
+function $(id){return document.getElementById(id)}
+var track=$('track'),dotsEl=$('dots'),counter=$('counter'),hint=$('hint'),sheet=$('sheet'),backdrop=$('backdrop');
+document.documentElement.style.setProperty('--accent',D.accent||'#ffffff');
+if(D.title)$('title').textContent=D.title;
+var bgs=[],dots=[];
+D.slides.forEach(function(s,i){
+ var sl=document.createElement('section');sl.className='slide';sl.setAttribute('aria-label','Imagem '+(i+1)+' de '+N);
+ var bg=document.createElement('div');bg.className='bg';bgs.push({el:bg,src:s.src,done:false});sl.appendChild(bg);
+ var st=document.createElement('div');st.className='stage';
+ var img=document.createElement('img');img.alt=(D.title?D.title+' - ':'')+'imagem '+(i+1);img.decoding='async';img.draggable=false;
+ if(i>1)img.loading='lazy';img.src=s.src;st.appendChild(img);
+ s.points.forEach(function(p,j){
+  var a=document.createElement('a');a.className='hs';a.href=p.url;a.target='_blank';a.rel='noopener';
+  a.style.left=p.x+'%';a.style.top=p.y+'%';a.style.setProperty('--d',(j*0.4)+'s');
+  a.setAttribute('aria-label',p.name||'Ver produto');
+  a.innerHTML='<span class="dot"></span>';
+  a.addEventListener('click',function(e){hideHint();if(D.mode!=='direct'){e.preventDefault();openSheet(p,s.src)}});
+  st.appendChild(a);
+ });
+ sl.appendChild(st);track.appendChild(sl);
+ if(N>1&&N<=15){var dt=document.createElement('i');dotsEl.appendChild(dt);dots.push(dt)}
+});
+function loadBg(i){var b=bgs[i];if(b&&!b.done){b.el.style.backgroundImage='url("'+b.src+'")';b.done=true}}
+function update(i){
+ if(i===cur)return;cur=i;
+ counter.textContent=(i+1)+' / '+N;
+ dots.forEach(function(d,k){d.className=k===i?'on':''});
+ loadBg(i);loadBg(i+1);loadBg(i-1);
+ $('prev').disabled=i===0;$('next').disabled=i===N-1;
+}
+if(N<2)counter.hidden=true;
+var ticking=false;
+track.addEventListener('scroll',function(){
+ if(ticking)return;ticking=true;
+ requestAnimationFrame(function(){ticking=false;var i=Math.round(track.scrollLeft/track.clientWidth);if(i!==cur){update(i);hideHint()}});
+},{passive:true});
+function go(i){i=Math.max(0,Math.min(N-1,i));track.scrollTo({left:i*track.clientWidth,behavior:'smooth'})}
+$('prev').onclick=function(){go(cur-1)};$('next').onclick=function(){go(cur+1)};
+document.addEventListener('keydown',function(e){
+ if(e.key==='Escape')return closeSheet();
+ if(sheet.classList.contains('open'))return;
+ if(e.key==='ArrowRight')go(cur+1);else if(e.key==='ArrowLeft')go(cur-1);
+});
+window.addEventListener('resize',function(){track.scrollLeft=cur*track.clientWidth});
+function hideHint(){hint.classList.add('off')}
+var hasPts=D.slides.some(function(s){return s.points.length});
+var msg=hasPts?'Toque nos pontos para ver os produtos':'';
+if(N>1)msg+=(msg?' · ':'')+'deslize →';
+if(msg){hint.textContent=msg;hint.classList.remove('off');setTimeout(hideHint,5000)}
+function openSheet(p,src){
+ $('sname').textContent=p.name||'Produto em destaque';
+ var pr=$('sprice');pr.textContent=p.price||'';pr.hidden=!p.price;
+ var th=$('sthumb');th.style.backgroundImage='url("'+src+'")';th.style.backgroundPosition=p.x+'% '+p.y+'%';
+ $('scta').href=p.url;
+ sheet.classList.add('open');backdrop.classList.add('open');sheet.setAttribute('aria-hidden','false');
+}
+function closeSheet(){sheet.classList.remove('open');backdrop.classList.remove('open');sheet.setAttribute('aria-hidden','true')}
+backdrop.onclick=closeSheet;$('sclose').onclick=closeSheet;
+$('scta').addEventListener('click',function(){setTimeout(closeSheet,400)});
+var y0=null;
+sheet.addEventListener('touchstart',function(e){y0=e.touches[0].clientY},{passive:true});
+sheet.addEventListener('touchend',function(e){if(y0!==null&&e.changedTouches[0].clientY-y0>60)closeSheet();y0=null});
+update(0);
+})();
+</script>
+</body>
+</html>
