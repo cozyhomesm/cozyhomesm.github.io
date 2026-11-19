@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#f7ece1" id="tc">
 <title>Cantinho da Leitura · Cozy Home Stop Motion</title>
 <base href="../">
 <meta name="description" content="✨Inspiração para decoração com produtos que você realmente pode comprar na Shopee!">
@@ -14,8 +14,8 @@
 <meta property="og:title" content="Cantinho da Leitura · Cozy Home Stop Motion">
 <meta property="og:description" content="✨Inspiração para decoração com produtos que você realmente pode comprar na Shopee!">
 <meta property="og:url" content="https://cozyhomesm.github.io/cantinho-da-leitura/">
-<meta property="og:image" content="https://cozyhomesm.github.io/cantinho-da-leitura/share.jpg?v=1011e491">
-<meta property="og:image:secure_url" content="https://cozyhomesm.github.io/cantinho-da-leitura/share.jpg?v=1011e491">
+<meta property="og:image" content="https://cozyhomesm.github.io/cantinho-da-leitura/share.jpg?v=8a2e0b40">
+<meta property="og:image:secure_url" content="https://cozyhomesm.github.io/cantinho-da-leitura/share.jpg?v=8a2e0b40">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -23,13 +23,28 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Cantinho da Leitura · Cozy Home Stop Motion">
 <meta name="twitter:description" content="✨Inspiração para decoração com produtos que você realmente pode comprar na Shopee!">
-<meta name="twitter:image" content="https://cozyhomesm.github.io/cantinho-da-leitura/share.jpg?v=1011e491">
-<link rel="icon" type="image/png" href="icon.png?v=25fd9780">
-<link rel="apple-touch-icon" href="icon.png?v=25fd9780">
+<meta name="twitter:image" content="https://cozyhomesm.github.io/cantinho-da-leitura/share.jpg?v=8a2e0b40">
+<link rel="icon" type="image/png" href="icon.png?v=d8af3d6d">
+<link rel="apple-touch-icon" href="icon.png?v=d8af3d6d">
 <style>
-:root{--accent:#fff}
+:root{--accent:#fff;--brand:#b8612f;--cream:#f7ece1;--ink:#4a2617;--muted:#7a5a48}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html,body{height:100%;background:#000;color:#fff;overflow:hidden;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+html,body{height:100%;background:var(--cream);color:#fff;overflow:hidden;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.home{position:fixed;inset:0;overflow-y:auto;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch;background:var(--cream);color:var(--ink)}
+.hhead{display:flex;flex-direction:column;align-items:center;text-align:center;padding:calc(34px + env(safe-area-inset-top)) 20px 24px}
+.hlogo{width:96px;height:96px;border-radius:50%;object-fit:cover;background:#fff;box-shadow:0 0 0 3px #fff,0 6px 20px rgba(74,38,23,.18);margin-bottom:16px}
+.htitle{font-size:22px;font-weight:800;line-height:1.2;letter-spacing:-.01em}
+.hsub{margin-top:8px;font-size:15px;font-weight:500;line-height:1.4;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;padding-bottom:calc(2px + env(safe-area-inset-bottom))}
+@media (min-width:700px){.grid{grid-template-columns:repeat(4,1fr);gap:4px;max-width:1100px;margin:0 auto;padding:0 16px 32px}}
+@media (min-width:1000px){.grid{grid-template-columns:repeat(5,1fr)}}
+.tile{display:block;position:relative;width:100%;border:0;padding:0;background:#e9d9c9;aspect-ratio:3/4;overflow:hidden;cursor:pointer}
+.tile img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .3s,filter .2s}
+.tile:active img{filter:brightness(.85)}
+.tile:focus-visible{outline:3px solid var(--brand);outline-offset:-3px}
+@media (hover:hover){.tile:hover img{transform:scale(1.03)}}
+.viewer{position:fixed;inset:0;z-index:4;background:#000;visibility:hidden;opacity:0;transition:opacity .25s,visibility 0s linear .25s}
+.viewer.on{visibility:visible;opacity:1;transition:opacity .25s}
 .track{display:flex;height:100vh;height:100dvh;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior:contain}
 .track::-webkit-scrollbar{display:none}
 .slide{position:relative;flex:0 0 100%;height:100%;scroll-snap-align:center;scroll-snap-stop:always;overflow:hidden;display:flex;align-items:center;justify-content:center}
@@ -43,12 +58,9 @@ html,body{height:100%;background:#000;color:#fff;overflow:hidden;font-family:sys
 .hs::after{animation-delay:calc(var(--d,0s) + 1.2s)}
 @keyframes pulse{0%{transform:scale(1);opacity:.75}100%{transform:scale(3.4);opacity:0}}
 .top{position:fixed;left:0;right:0;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:calc(14px + env(safe-area-inset-top)) 16px 30px;background:linear-gradient(rgba(0,0,0,.5),transparent);pointer-events:none}
-.brand{display:flex;align-items:center;gap:10px;min-width:0}
-.logo{width:36px;height:36px;border-radius:50%;object-fit:cover;flex:none;background:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.75),0 2px 8px rgba(0,0,0,.35)}
-.title{font-weight:700;font-size:16px;text-shadow:0 1px 6px rgba(0,0,0,.5);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .right{display:flex;align-items:center;gap:8px;margin-left:auto}
-.share{pointer-events:auto;width:34px;height:34px;border:0;border-radius:50%;background:rgba(0,0,0,.4);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}
-.share svg{width:18px;height:18px}
+.share,.back{pointer-events:auto;flex:none;width:34px;height:34px;border:0;border-radius:50%;background:rgba(0,0,0,.4);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.share svg{width:18px;height:18px}.back svg{width:22px;height:22px}
 .counter{font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:rgba(0,0,0,.4);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);font-variant-numeric:tabular-nums}
 .dots{position:fixed;left:0;right:0;bottom:calc(16px + env(safe-area-inset-bottom));z-index:5;display:flex;justify-content:center;gap:6px;pointer-events:none}
 .dots i{width:6px;height:6px;border-radius:3px;background:rgba(255,255,255,.45);transition:width .25s,background .25s;box-shadow:0 1px 3px rgba(0,0,0,.3)}
@@ -85,13 +97,19 @@ html,body{height:100%;background:#000;color:#fff;overflow:hidden;font-family:sys
 </style>
 </head>
 <body>
+<div class="home" id="home">
+ <header class="hhead"><img class="hlogo" id="hlogo" alt="" hidden><h1 class="htitle" id="htitle"></h1><p class="hsub">Escolha o cantinho para ver os produtos</p></header>
+ <nav class="grid" id="grid" aria-label="Cantinhos"></nav>
+</div>
+<div class="viewer" id="viewer" aria-hidden="true">
 <main class="track" id="track"></main>
-<div class="top"><div class="brand"><img class="logo" id="logo" alt="" hidden><div class="title" id="title"></div></div><div class="right"><div class="counter" id="counter"></div><button class="share" id="share" aria-label="Compartilhar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg></button></div></div>
+<div class="top"><button class="back" id="back" aria-label="Voltar para os cantinhos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><div class="right"><div class="counter" id="counter"></div><button class="share" id="share" aria-label="Compartilhar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg></button></div></div>
 <div class="dots" id="dots"></div>
 <button class="nav prev" id="prev" aria-label="Anterior">‹</button>
 <button class="nav next" id="next" aria-label="Próximo">›</button>
 <div class="hint off" id="hint"></div>
 <div class="swipe" id="swipe" aria-hidden="true"><div class="trail"></div><svg class="hand" viewBox="0 0 24 24"><path fill="#fff" stroke="#222" stroke-width=".9" stroke-linejoin="round" d="M10 7.5c0-.83.67-1.5 1.5-1.5S13 6.67 13 7.5v6h.76c.19 0 .37.04.54.11l4.54 2.26c.53.22.91.76.91 1.38 0 .06-.01.13-.02.2l-.75 5.27c-.11.73-.69 1.28-1.44 1.28h-6.79c-.41 0-.79-.17-1.06-.44L4.75 18.62l.79-.8c.2-.2.48-.33.79-.33.09 0 .16.02.24.03l3.43.72z"/><path fill="none" stroke="#fff" stroke-width="1.3" stroke-linecap="round" d="M8.2 9.6a3.6 3.6 0 1 1 6.6 0"/></svg></div>
+</div>
 <div class="backdrop" id="backdrop"></div>
 <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="sname">
  <div class="grab"></div>
@@ -100,9 +118,10 @@ html,body{height:100%;background:#000;color:#fff;overflow:hidden;font-family:sys
  <a class="cta" id="scta" target="_blank" rel="noopener">Ver na Shopee →</a>
 </div>
 <script>
-var DATA={"title":"Cozy Home Stop Motion","desc":"✨Inspiração para decoração com produtos que você realmente pode comprar na Shopee!","accent":"#ffffff","mode":"card","site":"https://cozyhomesm.github.io/","logo":"images/logo.webp?v=005f8764","icon":"icon.png?v=25fd9780","url":"https://cozyhomesm.github.io/cantinho-da-leitura/","image":"https://cozyhomesm.github.io/cantinho-da-leitura/share.jpg?v=1011e491","slides":[{"src":"images/01.webp?v=46ac61e2","name":"Corredor Decorado","slug":"corredor-decorado","points":[{"x":52.8,"y":32.25,"name":"Espelho Redondo com Botão Touch 70x70cm","price":"","url":"https://s.shopee.com.br/5Au8AMw9yR","color":"#3b82f6","mode":"card","th":"images/thumbs/01-01.webp?v=99a3d2fe"},{"x":86.16,"y":8.07,"name":"Mini Luminária de Parede LED Recarregável USB-C Magnética Sem Fio","price":"","url":"https://s.shopee.com.br/2qWDZLvKSn","color":"#3b82f6","mode":"card","th":"images/thumbs/01-02.webp?v=3e57a9b5"},{"x":14.74,"y":58.07,"name":"Boiserie 2,3cm Eva Flexível Autocolante À Prova D 'Água","price":"","url":"https://s.shopee.com.br/W8InDZuXK","color":"#3b82f6","mode":"card","th":"images/thumbs/01-03.webp?v=80053f03"},{"x":45.86,"y":39.3,"name":"Conjunto Vaso Decorativo + Arranjo Eucalipto Artificial","price":"","url":"https://s.shopee.com.br/4qHHuAbH8h","color":"#3b82f6","mode":"card","th":"images/thumbs/01-04.webp?v=0cbc70f2"}]},{"src":"images/02.webp?v=25160a4b","name":"Cantinho de beleza","slug":"cantinho-de-beleza","points":[{"x":39.08,"y":39.26,"name":"Espelho Redondo com Botão Touch 70x70cm","price":"","url":"https://s.shopee.com.br/5Au8AMw9yR","color":"#ffffff","mode":"card","th":"images/thumbs/02-01.webp?v=5cf8a3b2"},{"x":60.51,"y":78.56,"name":"Puff Decorativo Redondo em Linho","price":"","url":"https://s.shopee.com.br/9zzNvMNFgl","color":"#ffffff","mode":"card","th":"images/thumbs/02-02.webp?v=b3894c0e"},{"x":59.89,"y":62.56,"name":"Penteadeira Camarim Suspenso em MDF","price":"","url":"https://s.shopee.com.br/30pdaXeEVT","color":"#ffffff","mode":"card","th":"images/thumbs/02-03.webp?v=851ff0d7"},{"x":39.08,"y":18.86,"name":"Prateleira MDF Freijó 80x20cm","price":"","url":"https://s.shopee.com.br/9pfxjHrlxw","color":"#ffffff","mode":"card","th":"images/thumbs/02-04.webp?v=0045b597"}]},{"src":"images/03.webp?v=8a188160","name":"Cantinho da Leitura","slug":"cantinho-da-leitura","points":[{"x":52.89,"y":69.98,"name":"Puff Em Suede Com Enchimento","price":"","url":"https://s.shopee.com.br/6AmfMiNgtG","color":"#ffffff","mode":"card","th":"images/thumbs/03-01.webp?v=df8b0a0d"},{"x":81.12,"y":33,"name":"Luminaria De Piso Curva","price":"","url":"https://s.shopee.com.br/1gKG0Te5Ap","color":"#ffffff","mode":"card","th":"images/thumbs/03-02.webp?v=87bf8b61"},{"x":81.12,"y":81.69,"name":"Tapete de Juta Trançado Redondo de Palha Marrom","price":"","url":"https://s.shopee.com.br/5q9oyAN02X","color":"#ffffff","mode":"card","th":"images/thumbs/03-03.webp?v=9198eeab"},{"x":82.97,"y":59.66,"name":"Mesa de Apoio Retrô 62cm Redonda","price":"","url":"https://s.shopee.com.br/80EJYEHc3k","color":"#ffffff","mode":"card","th":"images/thumbs/03-04.webp?v=95411da2"},{"x":46.7,"y":32.65,"name":"Kit 3 Prateleiras 100x20","price":"","url":"https://s.shopee.com.br/5fqOlkDbfj","color":"#ffffff","mode":"card","th":"images/thumbs/03-05.webp?v=35e92a9d"}]},{"src":"images/04.webp?v=d4fc998c","name":"Área de Jantar Terracota","slug":"area-de-jantar-terracota","points":[{"x":51.01,"y":62.85,"name":"Mesa de Jantar Cone Redonda em Madeira Natural","price":"","url":"https://s.shopee.com.br/8VAbouYwnb","color":"#22c55e","mode":"card","th":"images/thumbs/04-01.webp?v=7ae9e7cb"},{"x":79.22,"y":67.76,"name":"Kit de 2 Cadeiras de Madeira Maciça Estofada","price":"","url":"https://s.shopee.com.br/5VX0FiP1R8","color":"#22c55e","mode":"card","th":"images/thumbs/04-02.webp?v=d689da12"},{"x":51.46,"y":32.13,"name":"Lustre Pendente Meia Lua 30cm Bancada Cozinha Branco","price":"","url":"https://s.shopee.com.br/5q9qekvFMm","color":"#22c55e","mode":"card","th":"images/thumbs/04-03.webp?v=9fd6f62b"},{"x":23.25,"y":28.73,"name":"Prateleira MDF Freijó 80x20cm para Parede","price":"","url":"https://s.shopee.com.br/9pfxjHrlxw","color":"#22c55e","mode":"card","th":"images/thumbs/04-04.webp?v=97158da1"},{"x":51.23,"y":50.76,"name":"Conjunto Vaso Decorativo + Arranjo Eucalipto Artificial Sala Redondo varias cores","price":"","url":"https://s.shopee.com.br/4qHHuAbH8h","color":"#22c55e","mode":"card","th":"images/thumbs/04-05.webp?v=14235666"},{"x":48.1,"y":91.44,"name":"Tapete de Juta Trançado Redondo de Palha Marrom","price":"","url":"https://s.shopee.com.br/5q9oyAN02X","color":"#22c55e","mode":"card","th":"images/thumbs/04-06.webp?v=3ba4ae15"}]},{"src":"images/05.webp?v=493a9873","name":"Cantinho do Café","slug":"cantinho-do-cafe","points":[{"x":80.11,"y":67.39,"name":"Cafeteira Arno Espresso Steam","price":"","url":"https://s.shopee.com.br/2BGWj1aIcq","color":"#3b82f6","mode":"card","th":"images/thumbs/05-01.webp?v=d474da6d"},{"x":62.2,"y":68.02,"name":"Conjunto Suporte Madeira Decoração Coração Com 4 Xícaras 200ML Porcelana Branca","price":"","url":"https://s.shopee.com.br/114ZL2EI72","color":"#3b82f6","mode":"card","th":"images/thumbs/05-02.webp?v=9c7333a7"},{"x":40.04,"y":68.9,"name":"Pote âmbar de Vidro com Tampa Hermética de Bambu","price":"","url":"https://s.shopee.com.br/1W0pvyhC3S","color":"#3b82f6","mode":"card","th":"images/thumbs/05-03.webp?v=61c5ed92"},{"x":30.64,"y":74.19,"name":"Bandeja de MDF estilo Bambu Retangular Moderna","price":"","url":"https://s.shopee.com.br/7VI351t95n","color":"#3b82f6","mode":"card","th":"images/thumbs/05-04.webp?v=67a3fb96"},{"x":15.86,"y":66.63,"name":"Conjunto Vaso Decorativo + Arranjo Eucalipto Artificial","price":"","url":"https://s.shopee.com.br/4qHHuAbH8h","color":"#3b82f6","mode":"card","th":"images/thumbs/05-05.webp?v=20e3ab6c"},{"x":61.98,"y":38.17,"name":"Kit 4 Quadros Decorativos Café Tabua Clara Cozinha Cantina","price":"","url":"https://s.shopee.com.br/AAIoGL3h2f","color":"#3b82f6","mode":"card","th":"images/thumbs/05-06.webp?v=e906a20c"}]}],"base":"../","pageTitle":"Cantinho da Leitura · Cozy Home Stop Motion"};
+var DATA={"title":"Cozy Home Stop Motion","desc":"✨Inspiração para decoração com produtos que você realmente pode comprar na Shopee!","brand":"#b8612f","site":"https://cozyhomesm.github.io/","logo":"images/logo.webp?v=84b3fe6f","icon":"icon.png?v=d8af3d6d","url":"https://cozyhomesm.github.io/cantinho-da-leitura/","image":"https://cozyhomesm.github.io/cantinho-da-leitura/share.jpg?v=8a2e0b40","slides":[{"src":"images/01.webp?v=25160a4b","name":"Cantinho de beleza","slug":"cantinho-de-beleza","points":[{"x":39.08,"y":39.26,"name":"Espelho Redondo com Botão Touch 70x70cm","price":"","url":"https://s.shopee.com.br/5Au8AMw9yR","color":"#ffffff","mode":"card","th":"images/thumbs/01-01.webp?v=f49c0e08"},{"x":60.51,"y":78.56,"name":"Puff Decorativo Redondo em Linho","price":"","url":"https://s.shopee.com.br/9zzNvMNFgl","color":"#ffffff","mode":"card","th":"images/thumbs/01-02.webp?v=9e3d6dd9"},{"x":59.89,"y":62.56,"name":"Penteadeira Camarim Suspenso em MDF","price":"","url":"https://s.shopee.com.br/30pdaXeEVT","color":"#ffffff","mode":"card","th":"images/thumbs/01-03.webp?v=77ce065a"},{"x":39.08,"y":18.86,"name":"Prateleira MDF Freijó 80x20cm","price":"","url":"https://s.shopee.com.br/9pfxjHrlxw","color":"#ffffff","mode":"card","th":"images/thumbs/01-04.webp?v=ee70b0ac"}],"grid":"images/grid/01.webp?v=b14c2cb5"},{"src":"images/02.webp?v=8a188160","name":"Cantinho da Leitura","slug":"cantinho-da-leitura","points":[{"x":52.89,"y":69.98,"name":"Puff Em Suede Com Enchimento","price":"","url":"https://s.shopee.com.br/6AmfMiNgtG","color":"#ffffff","mode":"card","th":"images/thumbs/02-01.webp?v=500de215"},{"x":81.12,"y":33,"name":"Luminaria De Piso Curva","price":"","url":"https://s.shopee.com.br/1gKG0Te5Ap","color":"#ffffff","mode":"card","th":"images/thumbs/02-02.webp?v=25838ccf"},{"x":81.12,"y":81.69,"name":"Tapete de Juta Trançado Redondo de Palha Marrom","price":"","url":"https://s.shopee.com.br/5q9oyAN02X","color":"#ffffff","mode":"card","th":"images/thumbs/02-03.webp?v=cb7e526c"},{"x":82.97,"y":59.66,"name":"Mesa de Apoio Retrô 62cm Redonda","price":"","url":"https://s.shopee.com.br/80EJYEHc3k","color":"#ffffff","mode":"card","th":"images/thumbs/02-04.webp?v=cec3ff8d"},{"x":46.7,"y":32.65,"name":"Kit 3 Prateleiras 100x20","price":"","url":"https://s.shopee.com.br/5fqOlkDbfj","color":"#ffffff","mode":"card","th":"images/thumbs/02-05.webp?v=ba0dce8a"}],"grid":"images/grid/02.webp?v=193520b8"},{"src":"images/03.webp?v=493a9873","name":"Cantinho do Café","slug":"cantinho-do-cafe","points":[{"x":80.11,"y":67.39,"name":"Cafeteira Arno Espresso Steam","price":"","url":"https://s.shopee.com.br/2BGWj1aIcq","color":"#3b82f6","mode":"card","th":"images/thumbs/03-01.webp?v=8e33009e"},{"x":62.2,"y":68.02,"name":"Conjunto Suporte Madeira Decoração Coração Com 4 Xícaras 200ML Porcelana Branca","price":"","url":"https://s.shopee.com.br/114ZL2EI72","color":"#3b82f6","mode":"card","th":"images/thumbs/03-02.webp?v=cfd672a6"},{"x":40.04,"y":68.9,"name":"Pote âmbar de Vidro com Tampa Hermética de Bambu","price":"","url":"https://s.shopee.com.br/1W0pvyhC3S","color":"#3b82f6","mode":"card","th":"images/thumbs/03-03.webp?v=3068e41c"},{"x":30.64,"y":74.19,"name":"Bandeja de MDF estilo Bambu Retangular Moderna","price":"","url":"https://s.shopee.com.br/7VI351t95n","color":"#3b82f6","mode":"card","th":"images/thumbs/03-04.webp?v=c8aaa27d"},{"x":15.86,"y":66.63,"name":"Conjunto Vaso Decorativo + Arranjo Eucalipto Artificial","price":"","url":"https://s.shopee.com.br/4qHHuAbH8h","color":"#3b82f6","mode":"card","th":"images/thumbs/03-05.webp?v=80a3f37c"},{"x":61.98,"y":38.17,"name":"Kit 4 Quadros Decorativos Café Tabua Clara Cozinha Cantina","price":"","url":"https://s.shopee.com.br/AAIoGL3h2f","color":"#3b82f6","mode":"card","th":"images/thumbs/03-06.webp?v=b1c8a9db"}],"grid":"images/grid/03.webp?v=a455b4c0"},{"src":"images/04.webp?v=46ac61e2","name":"Corredor Decorado","slug":"corredor-decorado","points":[{"x":52.8,"y":32.25,"name":"Espelho Redondo com Botão Touch 70x70cm","price":"","url":"https://s.shopee.com.br/5Au8AMw9yR","color":"#3b82f6","mode":"card","th":"images/thumbs/04-01.webp?v=7658a80f"},{"x":86.16,"y":8.07,"name":"Mini Luminária de Parede LED Recarregável USB-C Magnética Sem Fio","price":"","url":"https://s.shopee.com.br/2qWDZLvKSn","color":"#3b82f6","mode":"card","th":"images/thumbs/04-02.webp?v=ccc093b5"},{"x":14.74,"y":58.07,"name":"Boiserie 2,3cm Eva Flexível Autocolante À Prova D 'Água","price":"","url":"https://s.shopee.com.br/W8InDZuXK","color":"#3b82f6","mode":"card","th":"images/thumbs/04-03.webp?v=cd379d9c"},{"x":45.86,"y":39.3,"name":"Conjunto Vaso Decorativo + Arranjo Eucalipto Artificial","price":"","url":"https://s.shopee.com.br/4qHHuAbH8h","color":"#3b82f6","mode":"card","th":"images/thumbs/04-04.webp?v=f89d4a11"}],"grid":"images/grid/04.webp?v=a08cb634"}],"base":"../","pageTitle":"Cantinho da Leitura · Cozy Home Stop Motion"};
 (function(){
-var D=DATA,N=D.slides.length,cur=-1,booting=true,baseTitle=document.title;
+var D=DATA,N=D.slides.length,cur=-1,booting=true,bootT=null,viewerOpen=false,homeBelow=false;
+var homeTitle=D.title||document.title;
 function $(id){return document.getElementById(id)}
 function wanted(){
  try{
@@ -111,22 +130,29 @@ function wanted(){
   return parts.length?decodeURIComponent(parts[parts.length-1]):'';
  }catch(e){return ''}
 }
-var startIdx=0;
-if(typeof D.startIndex==='number')startIdx=Math.max(0,Math.min(N-1,D.startIndex));
-else{var w=wanted();D.slides.forEach(function(s,i){if(s.slug&&s.slug===w)startIdx=i})}
-var canUrl=/^https?:$/.test(location.protocol)&&typeof D.startIndex!=='number';
+function bySlug(w){var k=-1;if(w)D.slides.forEach(function(s,i){if(s.slug&&s.slug===w)k=i});return k}
+// na prévia do editor e no arquivo aberto do computador não mexemos no endereço
+var canUrl=/^https?:$/.test(location.protocol)&&!D.preview;
 var ROOT='';try{ROOT=new URL('./',document.baseURI).href}catch(e){canUrl=false}
-var track=$('track'),dotsEl=$('dots'),counter=$('counter'),hint=$('hint'),sheet=$('sheet'),backdrop=$('backdrop');
-document.documentElement.style.setProperty('--accent',D.accent||'#ffffff');
-if(D.title)$('title').textContent=D.title;
-if(D.logo){var lg=$('logo');lg.src=D.logo;lg.alt=D.title||'Logo';lg.hidden=false}
-var bgs=[],dots=[];
+function slideUrl(i){var s=D.slides[i];return s&&s.slug?ROOT+s.slug+'/':ROOT}
+var home=$('home'),grid=$('grid'),viewer=$('viewer'),track=$('track'),dotsEl=$('dots'),counter=$('counter'),hint=$('hint'),sheet=$('sheet'),backdrop=$('backdrop'),tc=$('tc');
+var root=document.documentElement;
+root.style.setProperty('--accent',D.accent||'#ffffff');
+if(/^#[0-9a-f]{6}$/i.test(D.brand||''))root.style.setProperty('--brand',D.brand);
+$('htitle').textContent=D.title||'Catálogo';
+if(D.logo){var lg=$('hlogo');lg.src=D.logo;lg.alt=D.title||'Logo';lg.hidden=false}
+var slidesEl=[],tiles=[],dots=[];
 D.slides.forEach(function(s,i){
+ // grade da tela inicial
+ var tl=document.createElement('button');tl.type='button';tl.className='tile';tl.setAttribute('aria-label',s.name||('Cantinho '+(i+1)));
+ var ti=document.createElement('img');ti.alt='';ti.decoding='async';ti.draggable=false;if(i>=12)ti.loading='lazy';ti.src=s.grid||s.src;
+ tl.appendChild(ti);tl.addEventListener('click',function(){openViewer(i,true)});grid.appendChild(tl);tiles.push(tl);
+ // slide em tela cheia (a foto grande só é baixada quando o cantinho é aberto)
  var sl=document.createElement('section');sl.className='slide';sl.setAttribute('aria-label','Imagem '+(i+1)+' de '+N);
- var bg=document.createElement('div');bg.className='bg';bgs.push({el:bg,src:s.src,done:false});sl.appendChild(bg);
+ var bg=document.createElement('div');bg.className='bg';sl.appendChild(bg);
  var st=document.createElement('div');st.className='stage';
- var img=document.createElement('img');img.alt=(D.title?D.title+' - ':'')+'imagem '+(i+1);img.decoding='async';img.draggable=false;
- if(Math.abs(i-startIdx)>1)img.loading='lazy';img.src=s.src;st.appendChild(img);
+ var img=document.createElement('img');img.alt=s.name||((D.title?D.title+' - ':'')+'imagem '+(i+1));img.decoding='async';img.draggable=false;
+ slidesEl.push({img:img,bg:bg,src:s.src,done:false});st.appendChild(img);
  s.points.forEach(function(p,j){
   var a=document.createElement('a');a.className='hs';a.href=p.url;a.target='_blank';a.rel='noopener';
   a.style.left=p.x+'%';a.style.top=p.y+'%';a.style.setProperty('--d',(j*0.4)+'s');
@@ -142,17 +168,53 @@ D.slides.forEach(function(s,i){
 });
 var thDone={};
 function preThumbs(i){var s=D.slides[i];if(!s)return;s.points.forEach(function(p){if(p.th&&!thDone[p.th]){thDone[p.th]=1;new Image().src=p.th}})}
-function loadBg(i){var b=bgs[i];if(b&&!b.done){b.el.style.backgroundImage='url("'+b.src+'")';b.done=true}}
+function loadSlide(i){var b=slidesEl[i];if(b&&!b.done){b.img.src=b.src;b.bg.style.backgroundImage='url("'+b.src+'")';b.done=true}}
 function update(i){
  if(i===cur)return;cur=i;
  counter.textContent=(i+1)+' / '+N;
  dots.forEach(function(d,k){d.className=k===i?'on':''});
- loadBg(i);loadBg(i+1);loadBg(i-1);preThumbs(i);
+ loadSlide(i);loadSlide(i+1);loadSlide(i-1);preThumbs(i);
  $('prev').disabled=i===0;$('next').disabled=i===N-1;
  var s=D.slides[i];
- document.title=s&&s.name?s.name+(D.title?' · '+D.title:''):(D.title||baseTitle);
- if(canUrl&&!booting){try{history.replaceState(null,'',s&&s.slug?ROOT+s.slug+'/':ROOT)}catch(e){}}
+ document.title=s&&s.name?s.name+(D.title?' · '+D.title:''):homeTitle;
+ if(canUrl&&!booting){try{history.replaceState({v:homeBelow?1:0,i:i},'',slideUrl(i))}catch(e){}}
 }
+function setTheme(c){if(tc)tc.setAttribute('content',c)}
+var hintShown=false;
+function openViewer(i,push){
+ i=Math.max(0,Math.min(N-1,i|0));
+ viewerOpen=true;booting=true;
+ viewer.classList.add('on');viewer.setAttribute('aria-hidden','false');home.setAttribute('aria-hidden','true');
+ cur=-1;update(i);
+ track.scrollLeft=i*track.clientWidth;
+ requestAnimationFrame(function(){track.scrollLeft=i*track.clientWidth});
+ clearTimeout(bootT);bootT=setTimeout(function(){booting=false},450);
+ if(canUrl&&push){homeBelow=true;try{history.pushState({v:1,i:i},'',slideUrl(i))}catch(e){}}
+ setTheme('#000000');
+ if(!hintShown){hintShown=true;var hasPts=D.slides.some(function(s){return s.points.length});
+  var msg=hasPts?'Toque nos pontos para ver os produtos':'';if(N>1)msg+=(msg?' · ':'')+'deslize →';
+  if(msg){hint.textContent=msg;hint.classList.remove('off');setTimeout(hideHint,5000)}}
+ armIdle();
+}
+function closeViewer(){
+ if(!viewerOpen)return;viewerOpen=false;
+ closeSheet();clearTimeout(idleT);hideSwipe();hideHint();
+ viewer.classList.remove('on');viewer.setAttribute('aria-hidden','true');home.removeAttribute('aria-hidden');
+ document.title=homeTitle;setTheme('#f7ece1');
+ var t=tiles[cur];if(t){var r=t.getBoundingClientRect();if(r.top<0||r.bottom>innerHeight)t.scrollIntoView({block:'center'})}
+}
+// voltar: se a grade está logo atrás no histórico, usa o voltar do navegador; senão mostra a grade aqui mesmo
+function goHome(){
+ if(canUrl&&homeBelow){history.back();return}
+ closeViewer();
+ if(canUrl){try{history.replaceState(null,'',ROOT)}catch(e){}}
+}
+$('back').onclick=goHome;
+window.addEventListener('popstate',function(){
+ var st=history.state;
+ if(st&&typeof st.i==='number'){homeBelow=!!st.v;openViewer(st.i,false)}
+ else{homeBelow=false;closeViewer()}
+});
 function shareUrl(){
  var s=D.slides[cur];
  if(D.site)return s&&s.slug?D.site+s.slug+'/':D.site;
@@ -174,16 +236,13 @@ track.addEventListener('scroll',function(){
 function go(i){i=Math.max(0,Math.min(N-1,i));track.scrollTo({left:i*track.clientWidth,behavior:'smooth'})}
 $('prev').onclick=function(){go(cur-1)};$('next').onclick=function(){go(cur+1)};
 document.addEventListener('keydown',function(e){
- if(e.key==='Escape')return closeSheet();
+ if(!viewerOpen)return;
+ if(e.key==='Escape'){if(sheet.classList.contains('open'))closeSheet();else goHome();return}
  if(sheet.classList.contains('open'))return;
  if(e.key==='ArrowRight')go(cur+1);else if(e.key==='ArrowLeft')go(cur-1);
 });
-window.addEventListener('resize',function(){track.scrollLeft=cur*track.clientWidth});
+window.addEventListener('resize',function(){if(viewerOpen)track.scrollLeft=cur*track.clientWidth});
 function hideHint(){hint.classList.add('off')}
-var hasPts=D.slides.some(function(s){return s.points.length});
-var msg=hasPts?'Toque nos pontos para ver os produtos':'';
-if(N>1)msg+=(msg?' · ':'')+'deslize →';
-if(msg){hint.textContent=msg;hint.classList.remove('off');setTimeout(hideHint,5000)}
 function openSheet(p,src){
  $('sname').textContent=p.name||'Produto em destaque';
  var pr=$('sprice');pr.textContent=p.price||'';pr.hidden=!p.price;
@@ -203,9 +262,9 @@ var swipeEl=$('swipe'),idleT=null,IDLE=6000,SHOW=3500;
 function hideSwipe(){swipeEl.classList.remove('on')}
 function armIdle(){
  clearTimeout(idleT);hideSwipe();
- if(N<2)return;
+ if(N<2||!viewerOpen)return;
  idleT=setTimeout(function(){
-  if(cur<N-1&&!sheet.classList.contains('open')&&!document.hidden){
+  if(viewerOpen&&cur<N-1&&!sheet.classList.contains('open')&&!document.hidden){
    hideHint();swipeEl.classList.add('on');
    idleT=setTimeout(armIdle,SHOW);
   }else armIdle();
@@ -213,13 +272,27 @@ function armIdle(){
 }
 ['touchstart','pointerdown','wheel','keydown'].forEach(function(t){document.addEventListener(t,armIdle,{passive:true})});
 track.addEventListener('scroll',armIdle,{passive:true});
-update(startIdx);
-if(startIdx>0){
- track.scrollLeft=startIdx*track.clientWidth;
- requestAnimationFrame(function(){track.scrollLeft=startIdx*track.clientWidth});
+// início: link de um cantinho abre direto nele; o endereço principal abre a grade
+var st0=canUrl?history.state:null,start=bySlug(wanted());
+if(start<0&&st0&&typeof st0.i==='number')start=st0.i;   // recarregou a página com um cantinho sem nome aberto
+if(start>=0){
+ homeBelow=!!(st0&&st0.v);
+ openViewer(start,false);
+ // chegou pelo link do cantinho: coloca a grade "atrás" no histórico no primeiro toque,
+ // para o voltar do celular levar à grade em vez de sair do site
+ if(canUrl&&!homeBelow){
+  var ev=['pointerup','touchend','keydown'];
+  var addHome=function(){
+   ev.forEach(function(t){document.removeEventListener(t,addHome,true)});
+   if(!viewerOpen||homeBelow)return;
+   try{history.replaceState(null,'',ROOT);history.pushState({v:1,i:cur},'',slideUrl(cur));homeBelow=true}catch(e){}
+  };
+  ev.forEach(function(t){document.addEventListener(t,addHome,true)});
+ }
+}else{
+ booting=false;
+ if(canUrl&&location.hash){try{history.replaceState(null,'',ROOT)}catch(e){}}
 }
-setTimeout(function(){booting=false},400);
-armIdle();
 })();
 </script>
 </body>
