@@ -134,6 +134,10 @@ function bySlug(w){var k=-1;if(w)D.slides.forEach(function(s,i){if(s.slug&&s.slu
 var canUrl=/^https?:$/.test(location.protocol)&&!D.preview;
 var ROOT='';try{ROOT=new URL('./',document.baseURI).href}catch(e){canUrl=false}
 function slideUrl(i){var s=D.slides[i];return s&&s.slug?ROOT+s.slug+'/':ROOT}
+// endereços completos desde já: depois que o endereço da página muda (/sala/), um caminho relativo apontaria para /sala/images/...
+function full(u){if(!u||/^(data|blob):/.test(u))return u;try{return new URL(u,document.baseURI).href}catch(e){return u}}
+D.logo=full(D.logo);
+D.slides.forEach(function(s){s.src=full(s.src);s.grid=full(s.grid);s.points.forEach(function(p){p.th=full(p.th)})});
 var home=$('home'),grid=$('grid'),viewer=$('viewer'),track=$('track'),dotsEl=$('dots'),counter=$('counter'),hint=$('hint'),sheet=$('sheet'),backdrop=$('backdrop'),tc=$('tc');
 var root=document.documentElement;
 root.style.setProperty('--accent',D.accent||'#ffffff');
